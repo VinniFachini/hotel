@@ -9,7 +9,9 @@ interface DecodedToken {
     id: string;
     // Add other properties from your token payload here
 }
+
 export const verifyToken = (req: CustomRequest, res: Response, next: NextFunction): void => {
+    
     const token = req.headers.authorization;
 
     if (!token) {
@@ -39,8 +41,8 @@ export const getUserIdFromToken = (token: string): string | null => {
 };
 
 export const getUserIdMiddleware = (req: CustomRequest, res: Response, next: NextFunction): void => {
-    const token = req.headers.authorization;
 
+    const token = req.headers.authorization;
     try {
         if (token) {
             const decodedToken = jwt.verify(token as string, process.env.JWT_SECRET as string) as { id: string }; // Assuming your decoded token has an 'id' field

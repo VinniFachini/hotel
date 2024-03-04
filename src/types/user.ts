@@ -6,18 +6,14 @@ interface User {
     email: string;
     username: string;
     role: UserRole;
-    user_image?: string;
 }
 
 // User Role Enum
 enum UserRole {
     Admin = 'Admin',
-    // Add other roles as necessary
+    Employee = 'Employee'
 }
 
-// Authentication Interfaces
-
-// Payload for JWT
 interface JwtPayload {
     username: string;
     id: string;

@@ -6,8 +6,12 @@ export interface RegisterRequest {
   email: string;
   password: string;
   username: string;
-  role?: string;
-  imagePath?: string;
+  role: string;
+  wage: number,
+  shift: number,
+  post: string,
+  address?: string,
+  phone?: string,
 }
 
 /**
@@ -23,16 +27,29 @@ export interface RegisterResponse {
 export interface LoginRequest {
   username: string;
   password: string;
+  email? :string;
 }
 
 /**
  * Interface representing User Data returned after successful login.
  */
-export interface UserData {
+
+export interface EmployeeData {
+  id: number,
   email: string;
   name: string;
   username: string;
-  user_image: string | null;
+  role: string,
+  shift: number,
+  post: string
+}
+
+export interface GuestData {
+  id: number,
+  email: string;
+  name: string;
+  address: string
+  phone: string
 }
 
 /**
@@ -40,7 +57,7 @@ export interface UserData {
  */
 export interface LoginResponse {
   token: string;
-  userData: UserData;
+  userData: GuestData | EmployeeData;
   expiresIn: number;
 }
 
