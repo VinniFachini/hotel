@@ -46,7 +46,7 @@ export const registerEmployee = async (req: Request<{}, {}, RegisterRequest>, re
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await queryAsync('INSERT INTO users (name, email, password, username, role, wage, shift, post) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [name, email, hashedPassword, username, role, wage, shift, post]);
+    await queryAsync('INSERT INTO users (name, email, password, username, role, wage, shift_id, post) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [name, email, hashedPassword, username, role, wage, shift, post]);
 
     res.status(201).json({ message: 'Usuário registrado com sucesso' });
   } catch (error) {
